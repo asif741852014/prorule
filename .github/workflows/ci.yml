@@ -1,10 +1,13 @@
-name: prorule
+# .github/workflows/branch-protection-trigger.yml
+name: Branch Protection Rule Trigger
+
 on:
-  brranch_protection_rule
-    branches:
-    - main
+  branch_protection_rule:
+    types: [created, edited, deleted]
+
 jobs:
-  job1:
+  notify:
     runs-on: ubuntu-latest
     steps:
-    - run: echo " hai from branch protection rule"
+      - name: Log Branch Protection Event
+        run: echo "A branch protection rule event has been triggered."
